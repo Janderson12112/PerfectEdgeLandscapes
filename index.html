@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ── TOKENS ─────────────────────────────────────────── */
     :root {
       --teal:      #3ECFAD;
       --teal-dim:  #2aab8e;
@@ -22,292 +21,88 @@
       --ff-display: 'Barlow Condensed', sans-serif;
       --ff-body:    'Barlow', sans-serif;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: var(--ff-body); color: var(--ink); background: var(--white); line-height: 1.6; overflow-x: hidden; }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── NAV ─────────────────────────────────────────────── */
-    nav {
-      position: sticky; top: 0; z-index: 200;
-      background: var(--ink);
-      border-bottom: 3px solid var(--teal);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 28px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
-    }
-    .nav-logo img { height: 46px; width: auto; }
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 200; background: var(--ink); border-bottom: 3px solid var(--teal); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav-logo img { height: 56px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-family: var(--ff-display); font-weight: 600;
-      font-size: 0.95rem; letter-spacing: 0.06em; text-transform: uppercase;
-      color: rgba(255,255,255,0.65); transition: color 0.2s;
-    }
+    .nav-links a { font-family: var(--ff-display); font-weight: 600; font-size: 0.95rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.65); transition: color 0.2s; }
     .nav-links a:hover { color: var(--teal); }
     .nav-right { display: flex; align-items: center; gap: 20px; }
-    .nav-phone {
-      font-family: var(--ff-display); font-weight: 700; font-size: 1.05rem;
-      color: var(--white); letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
+    .nav-phone { font-family: var(--ff-display); font-weight: 700; font-size: 1.05rem; color: var(--white); letter-spacing: 0.04em; transition: color 0.2s; }
     .nav-phone:hover { color: var(--teal); }
-    .btn-nav {
-      background: var(--teal); color: var(--ink);
-      font-family: var(--ff-display); font-weight: 800;
-      font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 10px 22px; border: none; cursor: pointer;
-      transition: background 0.2s;
-    }
+    .btn-nav { background: var(--teal); color: var(--ink); font-family: var(--ff-display); font-weight: 800; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 22px; border: none; cursor: pointer; transition: background 0.2s; }
     .btn-nav:hover { background: var(--teal-dim); }
-    .nav-toggle {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 4px;
-    }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
     .nav-toggle span { display: block; width: 24px; height: 2px; background: white; }
 
-    /* ── HERO — diagonal split ───────────────────────────── */
-    .hero {
-      background: var(--ink);
-      min-height: 86vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      overflow: hidden;
-    }
-    /* the "curb edge" diagonal running through the hero */
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 50%;
-      width: 6px;
-      background: var(--teal);
-      transform: skewX(-4deg) translateX(-3px);
-      z-index: 10;
-    }
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 80px 60px 80px 60px;
-      position: relative; z-index: 5;
-    }
-    .hero-tag {
-      display: inline-block;
-      font-family: var(--ff-display); font-weight: 700;
-      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-family: var(--ff-display); font-weight: 900;
-      font-size: clamp(3.2rem, 5.5vw, 5.2rem);
-      line-height: 0.95; text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 28px;
-    }
+    /* HERO */
+    .hero { background: var(--ink); min-height: 86vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 6px; background: var(--teal); transform: skewX(-4deg) translateX(-3px); z-index: 10; }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative; z-index: 5; }
+    .hero-tag { display: inline-block; font-family: var(--ff-display); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
+    .hero h1 { font-family: var(--ff-display); font-weight: 900; font-size: clamp(3.2rem, 5.5vw, 5.2rem); line-height: 0.95; text-transform: uppercase; color: var(--white); margin-bottom: 28px; }
     .hero h1 .accent { color: var(--teal); display: block; }
-    .hero-sub {
-      font-size: 1.05rem; color: rgba(255,255,255,0.6);
-      max-width: 420px; line-height: 1.65; margin-bottom: 40px;
-    }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.6); max-width: 420px; line-height: 1.65; margin-bottom: 40px; }
     .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--teal); color: var(--ink);
-      font-family: var(--ff-display); font-weight: 800;
-      font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase;
-      padding: 16px 36px; border: none; cursor: pointer;
-      transition: background 0.2s, transform 0.15s; display: inline-block;
-    }
+    .btn-primary { background: var(--teal); color: var(--ink); font-family: var(--ff-display); font-weight: 800; font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 36px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; display: inline-block; }
     .btn-primary:hover { background: var(--teal-dim); transform: translateY(-1px); }
-    .btn-ghost {
-      background: transparent; color: rgba(255,255,255,0.75);
-      font-family: var(--ff-display); font-weight: 700;
-      font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase;
-      padding: 16px 24px; border: 2px solid rgba(255,255,255,0.2);
-      cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,0.75); font-family: var(--ff-display); font-weight: 700; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 16px 24px; border: 2px solid rgba(255,255,255,0.2); cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: border-color 0.2s, color 0.2s; }
     .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
-    .hero-right {
-      position: relative; z-index: 4;
-      background: var(--ink-mid);
-    }
-    .hero-img-placeholder {
-      width: 100%; height: 100%; min-height: 500px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 12px;
-      border-left: none;
-      color: rgba(255,255,255,0.25);
-      font-family: var(--ff-body); font-size: 0.85rem;
-      text-align: center;
-      background:
-        repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 20px,
-          rgba(62,207,173,0.03) 20px,
-          rgba(62,207,173,0.03) 40px
-        ),
-        var(--ink-mid);
-    }
+    .hero-right { position: relative; z-index: 4; background: var(--ink-mid); }
+    .hero-img-placeholder { width: 100%; height: 100%; min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: rgba(255,255,255,0.25); font-family: var(--ff-body); font-size: 0.85rem; text-align: center; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(62,207,173,0.03) 20px, rgba(62,207,173,0.03) 40px), var(--ink-mid); }
     .hero-img-placeholder svg { opacity: 0.3; }
-    .hero-stats {
-      position: absolute; bottom: 32px; left: 32px; right: 32px;
-      display: flex; gap: 0;
-    }
-    .hero-stat {
-      flex: 1;
-      padding: 18px 20px;
-      background: rgba(0,0,0,0.5);
-      border-top: 3px solid transparent;
-    }
-    .hero-stat:first-child { border-top-color: var(--teal); }
-    .hero-stat-num {
-      font-family: var(--ff-display); font-weight: 900;
-      font-size: 2rem; color: var(--white); line-height: 1;
-    }
-    .hero-stat-label {
-      font-size: 0.75rem; color: rgba(255,255,255,0.45);
-      letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px;
-    }
 
-    /* ── TRUST STRIP ─────────────────────────────────────── */
-    .trust-strip {
-      background: var(--teal);
-      padding: 0;
-    }
-    .trust-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 28px;
-      display: flex; align-items: stretch;
-    }
-    .trust-item {
-      flex: 1;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 16px 20px;
-      font-family: var(--ff-display); font-weight: 700;
-      font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--ink);
-      border-right: 1px solid rgba(0,0,0,0.12);
-    }
+    /* TRUST STRIP */
+    .trust-strip { background: var(--teal); padding: 0; }
+    .trust-inner { max-width: 1200px; margin: 0 auto; padding: 0 28px; display: flex; align-items: stretch; }
+    .trust-item { flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 20px; font-family: var(--ff-display); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); border-right: 1px solid rgba(0,0,0,0.12); }
     .trust-item:last-child { border-right: none; }
     .trust-item svg { flex-shrink: 0; }
 
-    /* ── SECTION UTILITY ─────────────────────────────────── */
+    /* UTILITY */
     .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
-    .eyebrow {
-      font-family: var(--ff-display); font-weight: 700;
-      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 14px; display: block;
-    }
-    .section-h {
-      font-family: var(--ff-display); font-weight: 900;
-      font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase;
-      line-height: 1.0; color: var(--ink);
-    }
+    .eyebrow { font-family: var(--ff-display); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; display: block; }
+    .section-h { font-family: var(--ff-display); font-weight: 900; font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; line-height: 1.0; color: var(--ink); }
     .section-h.light { color: var(--white); }
 
-    /* ── SERVICES ────────────────────────────────────────── */
+    /* SERVICES */
     .services { padding: 100px 0; background: var(--white); }
-    .services-header {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
-      align-items: end; margin-bottom: 64px;
-    }
+    .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 64px; }
     .services-header p { color: var(--muted); font-size: 1rem; line-height: 1.7; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-      border: 1px solid var(--border);
-    }
-    .svc {
-      padding: 40px 36px;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      transition: background 0.2s;
-    }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); }
+    .svc { padding: 40px 36px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; transition: background 0.2s; }
     .svc:nth-child(3n) { border-right: none; }
     .svc:nth-child(4), .svc:nth-child(5), .svc:nth-child(6) { border-bottom: none; }
-    .svc::before {
-      content: '';
-      position: absolute; top: 0; left: 0; bottom: 0;
-      width: 0px; background: var(--teal);
-      transition: width 0.2s;
-    }
+    .svc::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 0; background: var(--teal); transition: width 0.2s; }
     .svc:hover { background: var(--stone); }
     .svc:hover::before { width: 4px; }
-    .svc h3 {
-      font-family: var(--ff-display); font-weight: 800;
-      font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.04em;
-      color: var(--ink); margin-bottom: 12px;
-      padding-top: 4px;
-      border-top: 3px solid var(--teal);
-      padding-top: 16px;
-    }
+    .svc h3 { font-family: var(--ff-display); font-weight: 800; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink); margin-bottom: 12px; border-top: 3px solid var(--teal); padding-top: 16px; }
     .svc p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
 
-    /* ── DARK ABOUT SECTION ──────────────────────────────── */
-    .about {
-      background: var(--ink);
-      border-top: 4px solid var(--teal);
-      padding: 100px 0;
-    }
-    .about-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .about-img-placeholder {
-      aspect-ratio: 4/5;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent, transparent 20px,
-        rgba(62,207,173,0.04) 20px, rgba(62,207,173,0.04) 40px
-      ), var(--ink-mid);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.2); font-size: 0.85rem; gap: 10px;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
+    /* ABOUT */
+    .about { background: var(--ink); border-top: 4px solid var(--teal); padding: 100px 0; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img-placeholder { aspect-ratio: 4/5; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(62,207,173,0.04) 20px, rgba(62,207,173,0.04) 40px), var(--ink-mid); display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-size: 0.85rem; gap: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.06); }
     .about-content .section-h { margin-bottom: 28px; }
-    .about-content p {
-      font-size: 1rem; color: rgba(255,255,255,0.6);
-      line-height: 1.75; margin-bottom: 20px;
-    }
+    .about-content p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 20px; }
     .about-list { list-style: none; margin: 32px 0; display: flex; flex-direction: column; gap: 14px; }
-    .about-list li {
-      display: flex; align-items: flex-start; gap: 16px;
-      font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.5;
-    }
-    .about-list li::before {
-      content: '';
-      display: block; flex-shrink: 0;
-      width: 18px; height: 2px; background: var(--teal);
-      margin-top: 11px;
-    }
+    .about-list li { display: flex; align-items: flex-start; gap: 16px; font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    .about-list li::before { content: ''; display: block; flex-shrink: 0; width: 18px; height: 2px; background: var(--teal); margin-top: 11px; }
     .about-list strong { color: var(--white); }
 
-    /* ── GALLERY ─────────────────────────────────────────── */
+    /* GALLERY */
     .gallery { padding: 100px 0; background: var(--stone); }
     .gallery-header { margin-bottom: 48px; }
     .gallery-header p { color: var(--muted); margin-top: 12px; max-width: 500px; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: 280px 280px;
-      gap: 6px;
-    }
-    .g-item {
-      background: #c8e8df;
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: #5a8a80; font-size: 0.8rem; font-weight: 500;
-      gap: 8px; text-align: center;
-      border: 2px dashed #a0cfc6;
-      position: relative;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
+    .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: 280px 280px; gap: 6px; }
+    .g-item { background: #c8e8df; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #5a8a80; font-size: 0.8rem; font-weight: 500; gap: 8px; text-align: center; border: 2px dashed #a0cfc6; position: relative; cursor: pointer; transition: opacity 0.2s; }
     .g-item:hover { opacity: 0.9; }
     .g-item img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
     .g1 { grid-column: span 5; }
@@ -317,181 +112,69 @@
     .g5 { grid-column: span 5; }
     .g6 { grid-column: span 4; }
 
-    /* ── TESTIMONIALS ────────────────────────────────────── */
-    .testimonials {
-      background: var(--white);
-      padding: 100px 0;
-    }
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); padding: 100px 0; }
     .testimonials-header { margin-bottom: 56px; }
     .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); }
-    .testi {
-      background: var(--white);
-      padding: 40px 36px;
-    }
+    .testi { background: var(--white); padding: 40px 36px; }
     .testi-stars { font-size: 0.85rem; letter-spacing: 3px; color: var(--teal); margin-bottom: 18px; }
-    .testi blockquote {
-      font-size: 1rem; color: var(--ink); line-height: 1.75;
-      font-style: italic; margin-bottom: 24px;
-      border-left: 3px solid var(--teal); padding-left: 18px;
-    }
-    .testi-author {
-      font-family: var(--ff-display); font-weight: 700;
-      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted);
-    }
+    .testi blockquote { font-size: 1rem; color: var(--ink); line-height: 1.75; font-style: italic; margin-bottom: 24px; border-left: 3px solid var(--teal); padding-left: 18px; }
+    .testi-author { font-family: var(--ff-display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 
-    /* ── SERVICE AREA ────────────────────────────────────── */
-    .area {
-      background: var(--ink);
-      border-top: 4px solid var(--teal);
-      padding: 100px 0;
-    }
-    .area-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
-    }
+    /* SERVICE AREA */
+    .area { background: var(--ink); border-top: 4px solid var(--teal); padding: 100px 0; }
+    .area-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .area-content .section-h { margin-bottom: 24px; }
     .area-content p { color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 36px; }
-    .city-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .city-item {
-      padding: 12px 18px;
-      border-right: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      font-family: var(--ff-display); font-weight: 600;
-      font-size: 0.9rem; letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.55);
-      transition: color 0.2s, background 0.2s;
-    }
+    .city-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid rgba(255,255,255,0.08); }
+    .city-item { padding: 12px 18px; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); font-family: var(--ff-display); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.55); transition: color 0.2s, background 0.2s; }
     .city-item:hover { color: var(--teal); background: rgba(62,207,173,0.04); }
     .city-item:nth-child(even) { border-right: none; }
-    .area-map-placeholder {
-      aspect-ratio: 4/3;
-      background: var(--ink-mid);
-      border: 1px solid rgba(255,255,255,0.06);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.2); font-size: 0.9rem; gap: 12px;
-      text-align: center;
-    }
-    .area-note {
-      margin-top: 28px;
-      font-size: 0.85rem; color: rgba(255,255,255,0.35);
-      font-style: italic;
-    }
+    .area-note { margin-top: 28px; font-size: 0.85rem; color: rgba(255,255,255,0.35); font-style: italic; }
+    .area-map-wrap { aspect-ratio: 4/3; border: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; }
+    .map-overlay-label { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(17,24,21,0.85); color: var(--teal); font-family: var(--ff-display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; padding: 10px; border-top: 2px solid var(--teal); }
 
-    /* ── CTA BAND ────────────────────────────────────────── */
-    .cta-band {
-      background: var(--teal);
-      padding: 80px 0;
-      text-align: center;
-    }
-    .cta-band h2 {
-      font-family: var(--ff-display); font-weight: 900;
-      font-size: clamp(2.2rem, 5vw, 4rem); text-transform: uppercase;
-      color: var(--ink); line-height: 1; margin-bottom: 16px;
-    }
+    /* CTA BAND */
+    .cta-band { background: var(--teal); padding: 80px 0; text-align: center; }
+    .cta-band h2 { font-family: var(--ff-display); font-weight: 900; font-size: clamp(2.2rem, 5vw, 4rem); text-transform: uppercase; color: var(--ink); line-height: 1; margin-bottom: 16px; }
     .cta-band p { font-size: 1.05rem; color: rgba(0,0,0,0.6); margin-bottom: 36px; }
-    .btn-dark {
-      background: var(--ink); color: var(--white);
-      font-family: var(--ff-display); font-weight: 800;
-      font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase;
-      padding: 18px 44px; border: none; cursor: pointer;
-      display: inline-block; transition: background 0.2s, transform 0.15s;
-    }
+    .btn-dark { background: var(--ink); color: var(--white); font-family: var(--ff-display); font-weight: 800; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 18px 44px; border: none; cursor: pointer; display: inline-block; transition: background 0.2s, transform 0.15s; }
     .btn-dark:hover { background: var(--ink-mid); transform: translateY(-1px); }
-    .cta-phone {
-      display: block; margin-top: 18px;
-      font-family: var(--ff-display); font-weight: 700;
-      font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase;
-      color: rgba(0,0,0,0.55);
-    }
+    .cta-phone { display: block; margin-top: 18px; font-family: var(--ff-display); font-weight: 700; font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,0,0,0.55); }
     .cta-phone a { color: var(--ink); }
 
-    /* ── CONTACT ─────────────────────────────────────────── */
+    /* CONTACT */
     .contact { padding: 100px 0; background: var(--white); }
-    .contact-inner {
-      display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start;
-    }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
     .contact-info .section-h { margin-bottom: 20px; }
     .contact-info p { color: var(--muted); line-height: 1.75; margin-bottom: 36px; }
-    .c-detail {
-      display: flex; align-items: center; gap: 16px;
-      margin-bottom: 20px; font-size: 0.95rem;
-    }
-    .c-detail-line {
-      width: 28px; height: 3px; background: var(--teal); flex-shrink: 0;
-    }
+    .c-detail { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; font-size: 0.95rem; }
+    .c-detail-line { width: 28px; height: 3px; background: var(--teal); flex-shrink: 0; }
     .c-detail a { color: var(--ink); font-weight: 500; transition: color 0.2s; }
     .c-detail a:hover { color: var(--teal-dim); }
-    .contact-form {
-      background: var(--stone);
-      border-top: 4px solid var(--teal);
-      padding: 44px 44px 40px;
-    }
-    .contact-form h3 {
-      font-family: var(--ff-display); font-weight: 900;
-      font-size: 1.6rem; text-transform: uppercase;
-      color: var(--ink); margin-bottom: 28px;
-    }
+    .contact-form { background: var(--stone); border-top: 4px solid var(--teal); padding: 44px 44px 40px; }
+    .contact-form h3 { font-family: var(--ff-display); font-weight: 900; font-size: 1.6rem; text-transform: uppercase; color: var(--ink); margin-bottom: 28px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-    .fg label {
-      font-family: var(--ff-display); font-weight: 700;
-      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--muted);
-    }
-    .fg input, .fg select, .fg textarea {
-      font-family: var(--ff-body); font-size: 0.95rem;
-      padding: 13px 16px; border: 1px solid var(--border);
-      background: var(--white); color: var(--ink);
-      outline: none; transition: border-color 0.2s;
-      border-radius: 0;
-      -webkit-appearance: none;
-    }
+    .fg label { font-family: var(--ff-display); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .fg input, .fg select, .fg textarea { font-family: var(--ff-body); font-size: 0.95rem; padding: 13px 16px; border: 1px solid var(--border); background: var(--white); color: var(--ink); outline: none; transition: border-color 0.2s; border-radius: 0; -webkit-appearance: none; }
     .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--teal); }
     .fg textarea { resize: vertical; min-height: 110px; }
-    .btn-submit {
-      width: 100%; background: var(--ink); color: var(--white);
-      font-family: var(--ff-display); font-weight: 800;
-      font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 17px; border: none; cursor: pointer;
-      transition: background 0.2s; margin-top: 6px;
-    }
+    .btn-submit { width: 100%; background: var(--ink); color: var(--white); font-family: var(--ff-display); font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 17px; border: none; cursor: pointer; transition: background 0.2s; margin-top: 6px; }
     .btn-submit:hover { background: var(--teal); color: var(--ink); }
 
-    /* ── FOOTER ──────────────────────────────────────────── */
-    footer {
-      background: var(--ink);
-      border-top: 4px solid var(--teal);
-      padding: 56px 0 28px;
-    }
-    .footer-inner {
-      display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 56px;
-      padding-bottom: 44px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      margin-bottom: 28px;
-    }
-    .footer-brand img { height: 46px; margin-bottom: 18px; }
+    /* FOOTER */
+    footer { background: var(--ink); border-top: 4px solid var(--teal); padding: 56px 0 28px; }
+    .footer-inner { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 56px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px; }
+    .footer-brand img { height: 56px; margin-bottom: 18px; }
     .footer-brand p { font-size: 0.875rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
-    .footer-col h4 {
-      font-family: var(--ff-display); font-weight: 700;
-      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 18px;
-    }
+    .footer-col h4 { font-family: var(--ff-display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 18px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col li a {
-      font-size: 0.875rem; color: rgba(255,255,255,0.45);
-      transition: color 0.2s;
-    }
+    .footer-col li a { font-size: 0.875rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
     .footer-col li a:hover { color: var(--teal); }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.78rem; color: rgba(255,255,255,0.25);
-    }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: rgba(255,255,255,0.25); }
 
-    /* ── RESPONSIVE ──────────────────────────────────────── */
+    /* RESPONSIVE */
     @media (max-width: 960px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero::after { display: none; }
@@ -502,14 +185,10 @@
       .svc:nth-child(3n) { border-right: 1px solid var(--border); }
       .svc:nth-child(2n) { border-right: none; }
       .svc:nth-child(5), .svc:nth-child(6) { border-bottom: none; }
-      .svc:nth-child(4) { border-bottom: 1px solid var(--border); }
-      .svc:nth-child(3) { border-bottom: 1px solid var(--border); }
+      .svc:nth-child(3), .svc:nth-child(4) { border-bottom: 1px solid var(--border); }
       .about-inner, .area-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .about-img-placeholder { aspect-ratio: 16/9; }
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-      }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
       .g1,.g2,.g3,.g4,.g5,.g6 { grid-column: span 1; aspect-ratio: 4/3; }
       .testi-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
@@ -538,11 +217,10 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <img src="fulllogo_transparent_nobuffer.png" alt="PerfectEdge Landscapes" />
+      <img src="fulllogo_transparent.png" alt="PerfectEdge Landscapes" />
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
@@ -560,15 +238,10 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <span class="hero-tag">Monticello, MN &amp; Surrounding Area</span>
-    <h1>
-      Sharp Edges.<br />
-      <span class="accent">Clean Yards.</span><br />
-      Real Craft.
-    </h1>
+    <h1>Sharp Edges.<br /><span class="accent">Clean Yards.</span><br />Real Craft.</h1>
     <p class="hero-sub">PerfectEdge Landscapes installs custom concrete curb edging and landscaping that defines your property for good. No shifting. No rotting. No redoing it every spring.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Get a Free Estimate</a>
@@ -583,24 +256,9 @@
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9l4-4 4 4 4-4 4 4"/><circle cx="8.5" cy="15.5" r="1.5"/></svg>
       Add hero project photo here
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">30mi</div>
-        <div class="hero-stat-label">Service Radius</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">Free</div>
-        <div class="hero-stat-label">Estimates</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">Local</div>
-        <div class="hero-stat-label">Owner on Every Job</div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- TRUST STRIP -->
 <div class="trust-strip">
   <div class="trust-inner">
     <div class="trust-item">
@@ -622,7 +280,6 @@
   </div>
 </div>
 
-<!-- SERVICES -->
 <section class="services" id="services">
   <div class="wrap">
     <div class="services-header">
@@ -633,35 +290,16 @@
       <p>From a single bed edge to a full property install, the work gets done right the first time. Brendan is on every job — no crews, no handoffs, no surprises.</p>
     </div>
     <div class="services-grid">
-      <div class="svc">
-        <h3>Custom Curb Edging</h3>
-        <p>Continuous poured concrete curbing that defines beds, drives, and walkways. Stays put through freeze-thaw cycles and never needs replacing.</p>
-      </div>
-      <div class="svc">
-        <h3>Landscape Install</h3>
-        <p>Full installations built around your curbing — planting, rock, mulch, and ground cover that looks intentional and holds its shape season after season.</p>
-      </div>
-      <div class="svc">
-        <h3>Rock &amp; Mulch</h3>
-        <p>Decorative rock and premium mulch installed cleanly, contained by your new curbing. No blowout, no spreading — just a finished, low-maintenance result.</p>
-      </div>
-      <div class="svc">
-        <h3>Residential Projects</h3>
-        <p>Front yards, back yards, driveways, garden beds. We work around your schedule and leave the site clean on the way out, every time.</p>
-      </div>
-      <div class="svc">
-        <h3>Commercial Properties</h3>
-        <p>HOAs, retail, and business properties that need consistent, professional curb appeal. We handle projects of all sizes with the same attention to detail.</p>
-      </div>
-      <div class="svc">
-        <h3>Repair &amp; Refresh</h3>
-        <p>Existing curbing that has settled, cracked, or shifted? We assess and repair — or replace entirely if that's what it takes to get it right.</p>
-      </div>
+      <div class="svc"><h3>Custom Curb Edging</h3><p>Continuous poured concrete curbing that defines beds, drives, and walkways. Stays put through freeze-thaw cycles and never needs replacing.</p></div>
+      <div class="svc"><h3>Landscape Install</h3><p>Full installations built around your curbing — planting, rock, mulch, and ground cover that looks intentional and holds its shape season after season.</p></div>
+      <div class="svc"><h3>Rock &amp; Mulch</h3><p>Decorative rock and premium mulch installed cleanly, contained by your new curbing. No blowout, no spreading — just a finished, low-maintenance result.</p></div>
+      <div class="svc"><h3>Residential Projects</h3><p>Front yards, back yards, driveways, garden beds. We work around your schedule and leave the site clean on the way out, every time.</p></div>
+      <div class="svc"><h3>Commercial Properties</h3><p>HOAs, retail, and business properties that need consistent, professional curb appeal. We handle projects of all sizes with the same attention to detail.</p></div>
+      <div class="svc"><h3>Repair &amp; Refresh</h3><p>Existing curbing that has settled, cracked, or shifted? We assess and repair — or replace entirely if that's what it takes to get it right.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT / WHY US -->
 <section class="about">
   <div class="wrap about-inner">
     <div class="about-img-placeholder">
@@ -684,44 +322,24 @@
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="gallery" id="gallery">
   <div class="wrap">
     <div class="gallery-header">
       <span class="eyebrow">Our Work</span>
       <h2 class="section-h">See the Difference<br />an Edge Makes.</h2>
-      <p>Before and after shots tell the story better than anything. Drop in project photos below.</p>
+      <p>Before and after shots tell the story better than anything.</p>
     </div>
     <div class="gallery-grid">
-      <div class="g-item g1">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9l4-4 4 4 4-4 4 4"/><circle cx="8" cy="15" r="2"/></svg>
-        Featured project photo
-      </div>
-      <div class="g-item g2">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
-        Project photo
-      </div>
-      <div class="g-item g3">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
-        Photo
-      </div>
-      <div class="g-item g4">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
-        Photo
-      </div>
-      <div class="g-item g5">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
-        Project photo
-      </div>
-      <div class="g-item g6">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
-        Project photo
-      </div>
+      <div class="g-item g1"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9l4-4 4 4 4-4 4 4"/><circle cx="8" cy="15" r="2"/></svg>Featured project photo</div>
+      <div class="g-item g2"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>Project photo</div>
+      <div class="g-item g3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>Photo</div>
+      <div class="g-item g4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>Photo</div>
+      <div class="g-item g5"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>Project photo</div>
+      <div class="g-item g6"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>Project photo</div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="wrap">
     <div class="testimonials-header">
@@ -729,26 +347,13 @@
       <h2 class="section-h">What Neighbors<br />Are Saying.</h2>
     </div>
     <div class="testi-grid">
-      <div class="testi">
-        <div class="testi-stars">★★★★★</div>
-        <blockquote>"Replace with a real customer review. Before/after results, what the process was like, whether they'd recommend PerfectEdge to neighbors."</blockquote>
-        <div class="testi-author">Customer Name &mdash; City, MN</div>
-      </div>
-      <div class="testi">
-        <div class="testi-stars">★★★★★</div>
-        <blockquote>"Replace with a real customer review. Specific service, how the yard looks now, what stood out about working with Brendan."</blockquote>
-        <div class="testi-author">Customer Name &mdash; City, MN</div>
-      </div>
-      <div class="testi">
-        <div class="testi-stars">★★★★★</div>
-        <blockquote>"Even a short one works great here. 'Showed up on time, done in a day, yard looks incredible. Neighbors have already asked for his number.'"</blockquote>
-        <div class="testi-author">Customer Name &mdash; City, MN</div>
-      </div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><blockquote>"Replace with a real customer review. Before/after results, what the process was like, whether they'd recommend PerfectEdge to neighbors."</blockquote><div class="testi-author">Customer Name &mdash; City, MN</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><blockquote>"Replace with a real customer review. Specific service, how the yard looks now, what stood out about working with Brendan."</blockquote><div class="testi-author">Customer Name &mdash; City, MN</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><blockquote>"Showed up on time, done in a day, yard looks incredible. Neighbors have already asked for his number."</blockquote><div class="testi-author">Customer Name &mdash; City, MN</div></div>
     </div>
   </div>
 </section>
 
-<!-- SERVICE AREA -->
 <section class="area" id="area">
   <div class="wrap area-inner">
     <div class="area-content">
@@ -756,29 +361,28 @@
       <h2 class="section-h light">Based in Monticello.<br />Serving 30 Miles Around It.</h2>
       <p>We cover a wide stretch of Wright, Sherburne, and surrounding counties. If you're not sure if we reach you, just call.</p>
       <div class="city-grid">
-        <div class="city-item">Monticello</div>
-        <div class="city-item">Big Lake</div>
-        <div class="city-item">Buffalo</div>
-        <div class="city-item">Elk River</div>
-        <div class="city-item">St. Michael</div>
-        <div class="city-item">Albertville</div>
-        <div class="city-item">Rogers</div>
-        <div class="city-item">Otsego</div>
-        <div class="city-item">Becker</div>
-        <div class="city-item">Princeton</div>
-        <div class="city-item">Zimmerman</div>
-        <div class="city-item">+ More</div>
+        <div class="city-item">Monticello</div><div class="city-item">Big Lake</div>
+        <div class="city-item">Buffalo</div><div class="city-item">Elk River</div>
+        <div class="city-item">St. Michael</div><div class="city-item">Albertville</div>
+        <div class="city-item">Rogers</div><div class="city-item">Otsego</div>
+        <div class="city-item">Becker</div><div class="city-item">Princeton</div>
+        <div class="city-item">Zimmerman</div><div class="city-item">+ More</div>
       </div>
       <p class="area-note">Not on the list? Call us anyway. We'll let you know if we can make it work.</p>
     </div>
-    <div class="area-map-placeholder">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Map goes here<br /><small style="opacity:.5">Google Maps embed or screenshot</small>
+    <div class="area-map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d161010!2d-93.7936!3d45.3058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1719000000000!5m2!1sen!2sus"
+        width="100%" height="100%"
+        style="border:0; display:block; min-height:360px;"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="map-overlay-label">30-Mile Service Radius from Monticello</div>
     </div>
   </div>
 </section>
 
-<!-- CTA BAND -->
 <section class="cta-band">
   <div class="wrap">
     <h2>Ready to Clean<br />Up Your Edges?</h2>
@@ -788,42 +392,23 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap contact-inner">
     <div class="contact-info">
       <span class="eyebrow">Get in Touch</span>
       <h2 class="section-h">Let's Talk<br />About Your Yard.</h2>
       <p>Fill out the form and we'll get back to you with a free estimate. Prefer to call or text? Works fine too.</p>
-      <div class="c-detail">
-        <div class="c-detail-line"></div>
-        <a href="tel:7632586624">763-258-6624</a>
-      </div>
-      <div class="c-detail">
-        <div class="c-detail-line"></div>
-        <a href="mailto:brendan@perfectedgelandscapes.com">brendan@perfectedgelandscapes.com</a>
-      </div>
-      <div class="c-detail">
-        <div class="c-detail-line"></div>
-        <span>Monticello, MN &amp; surrounding area</span>
-      </div>
+      <div class="c-detail"><div class="c-detail-line"></div><a href="tel:7632586624">763-258-6624</a></div>
+      <div class="c-detail"><div class="c-detail-line"></div><a href="mailto:brendan@perfectedgelandscapes.com">brendan@perfectedgelandscapes.com</a></div>
+      <div class="c-detail"><div class="c-detail-line"></div><span>Monticello, MN &amp; surrounding area</span></div>
     </div>
     <div class="contact-form">
       <h3>Request a Free Estimate</h3>
       <div class="form-row">
-        <div class="fg">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" placeholder="Jane Smith" />
-        </div>
-        <div class="fg">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" placeholder="(763) 000-0000" />
-        </div>
+        <div class="fg"><label for="name">Your Name</label><input type="text" id="name" placeholder="Jane Smith" /></div>
+        <div class="fg"><label for="phone">Phone</label><input type="tel" id="phone" placeholder="(763) 000-0000" /></div>
       </div>
-      <div class="fg">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="jane@email.com" />
-      </div>
+      <div class="fg"><label for="email">Email</label><input type="email" id="email" placeholder="jane@email.com" /></div>
       <div class="fg">
         <label for="service">Service</label>
         <select id="service">
@@ -836,21 +421,17 @@
           <option>Not sure yet</option>
         </select>
       </div>
-      <div class="fg">
-        <label for="msg">Tell us about the project</label>
-        <textarea id="msg" placeholder="Describe what you're looking to do, the size of the area, any questions..."></textarea>
-      </div>
+      <div class="fg"><label for="msg">Tell us about the project</label><textarea id="msg" placeholder="Describe what you're looking to do, the size of the area, any questions..."></textarea></div>
       <button class="btn-submit" onclick="handleSubmit()">Send Estimate Request</button>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="fulllogo_transparent_nobuffer.png" alt="PerfectEdge Landscapes" />
+        <img src="fulllogo_transparent.png" alt="PerfectEdge Landscapes" />
         <p>Custom concrete curb edging and landscaping serving Monticello and the surrounding communities. Locally owned and personally operated.</p>
       </div>
       <div class="footer-col">
@@ -891,17 +472,12 @@
     }
     alert('Thanks, ' + name + '! Brendan will be in touch soon to schedule your free estimate.');
   }
-
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
 </script>
-
 </body>
 </html>
