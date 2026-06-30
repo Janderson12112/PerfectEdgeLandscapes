@@ -522,25 +522,28 @@
     </div>
     <div class="contact-form">
       <h3>Request a Free Estimate</h3>
-      <div class="form-row">
-        <div class="fg"><label for="name">Your Name</label><input type="text" id="name" placeholder="Jane Smith" /></div>
-        <div class="fg"><label for="phone">Phone</label><input type="tel" id="phone" placeholder="(763) 000-0000" /></div>
-      </div>
-      <div class="fg"><label for="email">Email</label><input type="email" id="email" placeholder="jane@email.com" /></div>
-      <div class="fg">
-        <label for="service">Service</label>
-        <select id="service">
-          <option value="">What are you looking for?</option>
-          <option>Custom Curb Edging</option>
-          <option>Landscape Design &amp; Install</option>
-          <option>Rock &amp; Mulch</option>
-          <option>Repair &amp; Refresh</option>
-          <option>Commercial Property</option>
-          <option>Not sure yet</option>
-        </select>
-      </div>
-      <div class="fg"><label for="msg">Tell us about the project</label><textarea id="msg" placeholder="Describe what you're looking to do, the size of the area, any questions..."></textarea></div>
-      <button class="btn-submit" onclick="handleSubmit()">Send Estimate Request</button>
+      <form id="estimateForm" action="https://formspree.io/f/xeeblnwy" method="POST">
+        <div class="form-row">
+          <div class="fg"><label for="name">Your Name</label><input type="text" id="name" name="name" placeholder="Jane Smith" required /></div>
+          <div class="fg"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(763) 000-0000" /></div>
+        </div>
+        <div class="fg"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="jane@email.com" /></div>
+        <div class="fg">
+          <label for="service">Service</label>
+          <select id="service" name="service">
+            <option value="">What are you looking for?</option>
+            <option>Custom Curb Edging</option>
+            <option>Landscape Design &amp; Install</option>
+            <option>Rock &amp; Mulch</option>
+            <option>Repair &amp; Refresh</option>
+            <option>Commercial Property</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="fg"><label for="msg">Tell us about the project</label><textarea id="msg" name="message" placeholder="Describe what you're looking to do, the size of the area, any questions..."></textarea></div>
+        <button type="submit" class="btn-submit" id="submitBtn">Send Estimate Request</button>
+        <p id="formStatus" style="display:none; margin-top:14px; font-size:0.9rem; text-align:center;"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -586,15 +589,50 @@
     strip.scrollBy({ left: itemWidth * direction * 2, behavior: 'smooth' });
   }
 
-  function handleSubmit() {
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const email = document.getElementById('email').value.trim();
-    if (!name || (!phone && !email)) {
-      alert('Please enter your name and at least a phone number or email.');
-      return;
-    }
-    alert('Thanks, ' + name + '! Brendan will be in touch soon to schedule your free estimate.');
+  const estimateForm = document.getElementById('estimateForm');
+  if (estimateForm) {
+    estimateForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      const btn = document.getElementById('submitBtn');
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (!name || (!phone && !email)) {
+        status.style.display = 'block';
+        status.style.color = '#c0392b';
+        status.textContent = 'Please enter your name and at least a phone number or email.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(estimateForm.action, {
+          method: 'POST',
+          body: new FormData(estimateForm),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          status.style.display = 'block';
+          status.style.color = 'var(--teal-dim)';
+          status.textContent = 'Thanks, ' + name + '! Brendan will be in touch soon to schedule your free estimate.';
+          estimateForm.reset();
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        status.style.display = 'block';
+        status.style.color = '#c0392b';
+        status.textContent = 'Something went wrong. Please call or text 763-258-6624 directly.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send Estimate Request';
+      }
+    });
   }
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
