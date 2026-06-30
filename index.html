@@ -101,16 +101,18 @@
     .gallery { padding: 100px 0; background: var(--stone); }
     .gallery-header { margin-bottom: 48px; }
     .gallery-header p { color: var(--muted); margin-top: 12px; max-width: 500px; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: 280px 280px; gap: 6px; }
-    .g-item { background: #c8e8df; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #5a8a80; font-size: 0.8rem; font-weight: 500; gap: 8px; text-align: center; border: 2px dashed #a0cfc6; position: relative; cursor: pointer; transition: opacity 0.2s; }
-    .g-item:hover { opacity: 0.9; }
-    .g-item img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-    .g1 { grid-column: span 5; }
-    .g2 { grid-column: span 4; }
-    .g3 { grid-column: span 3; }
-    .g4 { grid-column: span 3; }
-    .g5 { grid-column: span 5; }
-    .g6 { grid-column: span 4; }
+    .ba-grid { display: flex; flex-direction: column; gap: 16px; }
+    .ba-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .ba-photo { position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--ink-mid); }
+    .ba-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .ba-tag {
+      position: absolute; top: 12px; left: 12px;
+      font-family: var(--ff-display); font-weight: 800;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 12px;
+    }
+    .ba-tag.before { background: rgba(0,0,0,0.6); color: rgba(255,255,255,0.85); }
+    .ba-tag.after { background: var(--teal); color: var(--ink); }
 
     /* TESTIMONIALS */
     .testimonials { background: var(--white); padding: 100px 0; }
@@ -188,8 +190,6 @@
       .svc:nth-child(3), .svc:nth-child(4) { border-bottom: 1px solid var(--border); }
       .about-inner, .area-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .about-img-placeholder { aspect-ratio: 16/9; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-      .g1,.g2,.g3,.g4,.g5,.g6 { grid-column: span 1; aspect-ratio: 4/3; }
       .testi-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: span 2; }
@@ -203,8 +203,7 @@
       .svc:last-child { border-bottom: none; }
       .form-row { grid-template-columns: 1fr; }
       .contact-form { padding: 28px 20px; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .g1,.g2,.g3,.g4,.g5,.g6 { grid-column: span 1; }
+      .ba-pair { grid-template-columns: 1fr; }
       .trust-inner { flex-direction: column; }
       .trust-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); }
       .footer-inner { grid-template-columns: 1fr; }
@@ -327,19 +326,52 @@
       <h2 class="section-h">See the Difference<br />an Edge Makes.</h2>
       <p>Before and after shots tell the story better than anything.</p>
     </div>
-    <div class="gallery-grid">
-      <div class="g-item g1" style="border:none;">
-        <img src="PE after1.JPG" alt="After - completed curb edging and landscape" />
-        <span style="position:absolute;top:12px;left:12px;background:var(--teal);color:var(--ink);font-family:var(--ff-display);font-weight:800;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;">After</span>
+    <div class="ba-grid">
+
+      <div class="ba-pair">
+        <div class="ba-photo">
+          <img src="PE before1.JPG" alt="Before - yard before curb edging install" />
+          <span class="ba-tag before">Before</span>
+        </div>
+        <div class="ba-photo">
+          <img src="PE after1.JPG" alt="After - completed curb edging and landscape" />
+          <span class="ba-tag after">After</span>
+        </div>
       </div>
-      <div class="g-item g2" style="border:none;">
-        <img src="PE before1.JPG" alt="Before - yard before curb edging install" />
-        <span style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:rgba(255,255,255,0.8);font-family:var(--ff-display);font-weight:800;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;">Before</span>
+
+      <div class="ba-pair">
+        <div class="ba-photo">
+          <img src="Before p1.JPG" alt="Before - retaining wall and bed area" />
+          <span class="ba-tag before">Before</span>
+        </div>
+        <div class="ba-photo">
+          <img src="After p1_1.jpg" alt="After - stamped concrete curbing and stone retaining wall" />
+          <span class="ba-tag after">After</span>
+        </div>
       </div>
-      <div class="g-item g3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>Photo</div>
-      <div class="g-item g4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>Photo</div>
-      <div class="g-item g5"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>Project photo</div>
-      <div class="g-item g6"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>Project photo</div>
+
+      <div class="ba-pair">
+        <div class="ba-photo">
+          <img src="Before p2_1.JPG" alt="Before - gravel patio area" />
+          <span class="ba-tag before">Before</span>
+        </div>
+        <div class="ba-photo">
+          <img src="After p2_1.jpg" alt="After - curved stamped curbing around patio and retaining wall" />
+          <span class="ba-tag after">After</span>
+        </div>
+      </div>
+
+      <div class="ba-pair">
+        <div class="ba-photo">
+          <img src="Before p3_1.JPG" alt="Before - flower bed edge" />
+          <span class="ba-tag before">Before</span>
+        </div>
+        <div class="ba-photo">
+          <img src="After p3_1.jpg" alt="After - finished curb edge with landscaping" />
+          <span class="ba-tag after">After</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
