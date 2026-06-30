@@ -123,6 +123,38 @@
     .testi blockquote { font-size: 1rem; color: var(--ink); line-height: 1.75; font-style: italic; margin-bottom: 24px; border-left: 3px solid var(--teal); padding-left: 18px; }
     .testi-author { font-family: var(--ff-display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 
+    /* MORE WORK - SCROLL STRIP */
+    .more-work { background: var(--ink); padding: 64px 0 72px; border-top: 4px solid var(--teal); overflow: hidden; }
+    .more-work-header { margin-bottom: 32px; }
+    .more-work .section-h { color: var(--white); }
+    .strip-scroll {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      padding: 0 28px;
+    }
+    .strip-scroll::-webkit-scrollbar { height: 8px; }
+    .strip-scroll::-webkit-scrollbar-track { background: var(--ink-mid); }
+    .strip-scroll::-webkit-scrollbar-thumb { background: var(--teal); }
+    .strip-track { display: flex; gap: 14px; width: max-content; }
+    .strip-item {
+      width: 280px; height: 360px; flex-shrink: 0;
+      scroll-snap-align: start;
+      overflow: hidden;
+      position: relative;
+      border-bottom: 4px solid var(--teal);
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .strip-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .strip-item:hover img { transform: scale(1.06); }
+    .strip-item:hover { transform: translateY(-6px); }
+
     /* SERVICE AREA */
     .area { background: var(--ink); border-top: 4px solid var(--teal); padding: 100px 0; }
     .area-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -204,6 +236,7 @@
       .form-row { grid-template-columns: 1fr; }
       .contact-form { padding: 28px 20px; }
       .ba-pair { grid-template-columns: 1fr; }
+      .strip-item { width: 220px; height: 280px; }
       .trust-inner { flex-direction: column; }
       .trust-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); }
       .footer-inner { grid-template-columns: 1fr; }
@@ -376,7 +409,31 @@
   </div>
 </section>
 
-<section class="testimonials">
+<section class="more-work">
+  <div class="more-work-header wrap">
+    <span class="eyebrow">More From the Field</span>
+    <h2 class="section-h">A Look at Recent Jobs.</h2>
+  </div>
+  <div class="strip-scroll">
+    <div class="strip-track">
+      <div class="strip-item"><img src="Random1.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random2.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random3.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random4.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random5.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random6.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random7.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random8.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random9.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random10.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random11.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random12.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random13.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random14.JPG" alt="Job site photo" /></div>
+      <div class="strip-item"><img src="Random15.JPG" alt="Job site photo" /></div>
+    </div>
+  </div>
+</section>
   <div class="wrap">
     <div class="testimonials-header">
       <span class="eyebrow">Reviews</span>
