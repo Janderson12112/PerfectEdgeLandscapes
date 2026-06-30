@@ -125,8 +125,19 @@
 
     /* MORE WORK - SCROLL STRIP */
     .more-work { background: var(--ink); padding: 64px 0 72px; border-top: 4px solid var(--teal); overflow: hidden; }
-    .more-work-header { margin-bottom: 32px; }
+    .more-work-header { margin-bottom: 32px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
     .more-work .section-h { color: var(--white); }
+    .strip-nav { display: flex; gap: 10px; flex-shrink: 0; }
+    .strip-arrow {
+      width: 48px; height: 48px;
+      border: 2px solid var(--teal);
+      background: transparent;
+      color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .strip-arrow:hover { background: var(--teal); color: var(--ink); }
     .strip-scroll {
       width: 100vw;
       position: relative;
@@ -135,7 +146,8 @@
       margin-left: -50vw;
       margin-right: -50vw;
       overflow-x: auto;
-      scroll-snap-type: x proximity;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       padding: 0 28px;
     }
@@ -146,6 +158,7 @@
     .strip-item {
       width: 280px; height: 360px; flex-shrink: 0;
       scroll-snap-align: start;
+      scroll-snap-stop: always;
       overflow: hidden;
       position: relative;
       border-bottom: 4px solid var(--teal);
@@ -237,6 +250,8 @@
       .contact-form { padding: 28px 20px; }
       .ba-pair { grid-template-columns: 1fr; }
       .strip-item { width: 220px; height: 280px; }
+      .strip-nav { display: none; }
+      .more-work-header { flex-direction: column; align-items: flex-start; gap: 12px; }
       .trust-inner { flex-direction: column; }
       .trust-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); }
       .footer-inner { grid-template-columns: 1fr; }
@@ -411,10 +426,20 @@
 
 <section class="more-work">
   <div class="more-work-header wrap">
-    <span class="eyebrow">More From the Field</span>
-    <h2 class="section-h">A Look at Recent Jobs.</h2>
+    <div>
+      <span class="eyebrow">More From the Field</span>
+      <h2 class="section-h">A Look at Recent Jobs.</h2>
+    </div>
+    <div class="strip-nav">
+      <button class="strip-arrow" onclick="scrollStrip(-1)" aria-label="Scroll left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="strip-arrow" onclick="scrollStrip(1)" aria-label="Scroll right">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
   </div>
-  <div class="strip-scroll">
+  <div class="strip-scroll" id="workStrip">
     <div class="strip-track">
       <div class="strip-item"><img src="Random1.JPG" alt="Job site photo" /></div>
       <div class="strip-item"><img src="Random2.JPG" alt="Job site photo" /></div>
@@ -557,6 +582,12 @@
 </footer>
 
 <script>
+  function scrollStrip(direction) {
+    const strip = document.getElementById('workStrip');
+    const itemWidth = strip.querySelector('.strip-item').offsetWidth + 14;
+    strip.scrollBy({ left: itemWidth * direction * 2, behavior: 'smooth' });
+  }
+
   function handleSubmit() {
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
